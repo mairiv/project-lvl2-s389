@@ -1,0 +1,43 @@
+{
+  "name": "gendiff_project_lvl2",
+  "version": "1.0.0",
+  "description": "hexlet project-lvl2-s389",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mairiv/project-lvl2-s389.git"
+  },
+  "bin": {
+    "gendiff": "dist/bin/gendiff.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "hexlet"
+  ],
+  "author": "Mairiv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mairiv/project-lvl2-s389/issues"
+  },
+  "homepage": "https://github.com/mairiv/project-lvl2-s389#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  },
+  "dependencies": {
+    "commander": "^2.19.0"
+  }
+}
