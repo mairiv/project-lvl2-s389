@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import generateDiff from '../dist/gendiff';
+import generateDiff from '../src/gendiff';
 
 const fileresultPath = path.join(__dirname, '/__fixtures__/genDiffResult');
 const fileBeforePath = path.join(__dirname, '/__fixtures__/before.json');
