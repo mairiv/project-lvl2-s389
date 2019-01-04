@@ -6,7 +6,12 @@
 
 [![Build Status](https://travis-ci.com/mairiv/project-lvl2-s389.svg?branch=master)](https://travis-ci.com/mairiv/project-lvl2-s389)
 
-# example
+# example help
 <a href="https://asciinema.org/a/Vb5FgfBBAXX7N2CTonQrjvf1K" target="_blank">
   <img src="https://asciinema.org/a/Vb5FgfBBAXX7N2CTonQrjvf1K.png" width="410">
+</a>
+
+# example gendiff <before> <after>
+<a href="https://asciinema.org/a/y6J8ZcxBM6vDmhkesw9kDYoGM" target="_blank">
+  <img src="https://asciinema.org/a/y6J8ZcxBM6vDmhkesw9kDYoGM.png" width="410">
 </a>
