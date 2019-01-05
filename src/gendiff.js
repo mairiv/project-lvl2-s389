@@ -5,17 +5,17 @@ import parseData from './parsers';
 
 const findDiff = (beforeConfig, afterConfig) => {
   const unicKeys = _.union(Object.keys(beforeConfig), Object.keys(afterConfig));
-
   const result = unicKeys.reduce((acc, el) => {
-    const isKeyHasBefore = _.has(el)(beforeConfig);
-    const isKeyHasAfter = _.has(el)(afterConfig);
-    if (isKeyHasBefore && isKeyHasAfter) {
+    const isBeforeConfigHasKey = _.has(el)(beforeConfig);
+    const isAfterConfigHasKey = _.has(el)(afterConfig);
+
+    if (isBeforeConfigHasKey && isAfterConfigHasKey) {
       if (beforeConfig[el] === afterConfig[el]) {
         return `${acc}   ${el}: ${beforeConfig[el]}\n`;
       }
       return `${acc} - ${el}: ${beforeConfig[el]}\n + ${el}: ${afterConfig[el]}\n`;
     }
-    return `${acc} ${isKeyHasBefore ? '-' : '+'} ${el}: ${isKeyHasBefore ? beforeConfig[el] : afterConfig[el]}\n`;
+    return `${acc} ${isBeforeConfigHasKey ? '-' : '+'} ${el}: ${isBeforeConfigHasKey ? beforeConfig[el] : afterConfig[el]}\n`;
   }, '');
   return result;
 };
