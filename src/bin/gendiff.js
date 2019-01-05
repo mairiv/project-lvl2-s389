@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import gendiff from '..';
+import runProgram from '../cli';
 
-gendiff();
+runProgram();

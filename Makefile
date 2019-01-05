@@ -13,3 +13,6 @@ build:
 
 test: 
 	npm test
+
+testLive: 
+	npm run testWatch
