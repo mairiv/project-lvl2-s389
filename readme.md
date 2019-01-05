@@ -20,3 +20,8 @@
 <a href="https://asciinema.org/a/TFLdG7Z9dGO0pXRwFFsZiufht" target="_blank">
   <img src="https://asciinema.org/a/TFLdG7Z9dGO0pXRwFFsZiufht.png" width="410">
 </a>
+
+# example gendiff <before> <after> ini format
+<a href="https://asciinema.org/a/YJLsXgJsE6B2uNLueWb3Zl3hu" target="_blank">
+  <img src="https://asciinema.org/a/YJLsXgJsE6B2uNLueWb3Zl3hu.png" width="410">
+</a>

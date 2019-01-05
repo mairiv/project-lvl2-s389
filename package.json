@@ -1,6 +1,6 @@
 {
   "name": "gendiff_project_lvl2",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "hexlet project-lvl2-s389",
   "main": "index.js",
   "scripts": {
@@ -55,6 +55,7 @@
   "dependencies": {
     "commander": "^2.19.0",
     "eslint-plugin-lodash-fp": "^2.2.0-a1",
+    "ini": "^1.3.5",
     "js-yaml": "^3.12.0",
     "lodash": "^4.17.11"
   }

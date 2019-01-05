@@ -3,17 +3,35 @@ import fs from 'fs';
 import generateDiff from '../src';
 
 const resultFilePath = path.join(__dirname, '/__fixtures__/genDiffResult');
-const beforeJsonFilePath = path.join(__dirname, '/__fixtures__/before.json');
-const afterJsonFilePath = path.join(__dirname, '/__fixtures__/after.json');
-const beforeYmlFilePath = path.join(__dirname, '/__fixtures__/before.yml');
-const afterYmlFilePath = path.join(__dirname, '/__fixtures__/after.yml');
 
-test('gendiff json files', () => {
-  expect(generateDiff(beforeJsonFilePath, afterJsonFilePath).trim())
-    .toBe(fs.readFileSync(resultFilePath, 'utf8').trim());
-});
+const testData = [
+  [
+    'json',
+    {
+      beforeFilePath: path.join(__dirname, '/__fixtures__/before.json'),
+      afterFilePath: path.join(__dirname, '/__fixtures__/after.json'),
+    },
+  ],
+  [
+    'YAML',
+    {
+      beforeFilePath: path.join(__dirname, '/__fixtures__/before.yml'),
+      afterFilePath: path.join(__dirname, '/__fixtures__/after.yml'),
+    },
+  ],
+  [
+    'ini',
+    {
+      beforeFilePath: path.join(__dirname, '/__fixtures__/before.ini'),
+      afterFilePath: path.join(__dirname, '/__fixtures__/after.ini'),
+    },
+  ],
+];
 
-test('gendiff yml files', () => {
-  expect(generateDiff(beforeYmlFilePath, afterYmlFilePath).trim())
-    .toBe(fs.readFileSync(resultFilePath, 'utf8').trim());
-});
+test.each(testData)(
+  'gendiff %s files',
+  (format, { beforeFilePath, afterFilePath }) => {
+    expect(generateDiff(beforeFilePath, afterFilePath).trim())
+      .toBe(fs.readFileSync(resultFilePath, 'utf8').trim());
+  },
+);
