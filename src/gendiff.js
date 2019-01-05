@@ -1,5 +1,5 @@
 import _ from 'lodash/fp';
-import parseFile from './parser';
+import parseFile from './parsers';
 
 const findDiff = (beforeConfig, afterConfig) => {
   const unicKeys = _.union(Object.keys(beforeConfig), Object.keys(afterConfig));
