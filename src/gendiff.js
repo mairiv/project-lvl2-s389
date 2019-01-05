@@ -1,31 +1,32 @@
 import _ from 'lodash/fp';
-import parseFile from './parsers';
+import fs from 'fs';
+import path from 'path';
+import parseData from './parsers';
 
 const findDiff = (beforeConfig, afterConfig) => {
   const unicKeys = _.union(Object.keys(beforeConfig), Object.keys(afterConfig));
 
   const result = unicKeys.reduce((acc, el) => {
-    const resStep = acc;
-    if (beforeConfig[el] === afterConfig[el]) {
-      resStep.push(`\n   ${el}: ${beforeConfig[el]}`);
-    } else {
-      if (_.has(el)(beforeConfig)) {
-        resStep.push(`\n - ${el}: ${beforeConfig[el]}`);
+    const isKeyHasBefore = _.has(el)(beforeConfig);
+    const isKeyHasAfter = _.has(el)(afterConfig);
+    if (isKeyHasBefore && isKeyHasAfter) {
+      if (beforeConfig[el] === afterConfig[el]) {
+        return `${acc}   ${el}: ${beforeConfig[el]}\n`;
       }
-      if (_.has(el)(afterConfig)) {
-        resStep.push(`\n + ${el}: ${afterConfig[el]}`);
-      }
+      return `${acc} - ${el}: ${beforeConfig[el]}\n + ${el}: ${afterConfig[el]}\n`;
     }
-    return resStep;
-  }, []);
-  return result.join('');
+    return `${acc} ${isKeyHasBefore ? '-' : '+'} ${el}: ${isKeyHasBefore ? beforeConfig[el] : afterConfig[el]}\n`;
+  }, '');
+  return result;
 };
 
+const getConfig = filePath => parseData(fs.readFileSync(filePath, 'utf8'), path.extname(filePath).slice(1));
+
 const genDiff = (firstPath, secondPath) => {
-  const firstConfig = parseFile(firstPath);
-  const secondConfig = parseFile(secondPath);
-  const diffString = findDiff(firstConfig, secondConfig);
-  return diffString;
+  const firstConfig = getConfig(firstPath);
+  const secondConfig = getConfig(secondPath);
+  const diff = findDiff(firstConfig, secondConfig);
+  return diff;
 };
 
 export default genDiff;
