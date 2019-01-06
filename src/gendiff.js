@@ -5,19 +5,19 @@ import parseData from './parsers';
 
 const findDiff = (beforeConfig, afterConfig) => {
   const unicKeys = _.union(Object.keys(beforeConfig), Object.keys(afterConfig));
-  const result = unicKeys.reduce((acc, el) => {
-    const isBeforeConfigHasKey = _.has(el)(beforeConfig);
-    const isAfterConfigHasKey = _.has(el)(afterConfig);
+  const result = unicKeys.map((el) => {
+    const hasKeyBefore = _.has(el)(beforeConfig);
+    const hasKeyAfter = _.has(el)(afterConfig);
 
-    if (isBeforeConfigHasKey && isAfterConfigHasKey) {
+    if (hasKeyBefore && hasKeyAfter) {
       if (beforeConfig[el] === afterConfig[el]) {
-        return `${acc}   ${el}: ${beforeConfig[el]}\n`;
+        return `   ${el}: ${beforeConfig[el]}`;
       }
-      return `${acc} - ${el}: ${beforeConfig[el]}\n + ${el}: ${afterConfig[el]}\n`;
+      return [` - ${el}: ${beforeConfig[el]}`, ` + ${el}: ${afterConfig[el]}`];
     }
-    return `${acc} ${isBeforeConfigHasKey ? '-' : '+'} ${el}: ${isBeforeConfigHasKey ? beforeConfig[el] : afterConfig[el]}\n`;
-  }, '');
-  return result;
+    return ` ${hasKeyBefore ? '-' : '+'} ${el}: ${hasKeyBefore ? beforeConfig[el] : afterConfig[el]}`;
+  });
+  return _.flatten(result).join('\n');
 };
 
 const getConfig = filePath => parseData(fs.readFileSync(filePath, 'utf8'), path.extname(filePath).slice(1));
