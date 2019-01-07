@@ -6,22 +6,7 @@
 
 [![Build Status](https://travis-ci.com/mairiv/project-lvl2-s389.svg?branch=master)](https://travis-ci.com/mairiv/project-lvl2-s389)
 
-# example help
-<a href="https://asciinema.org/a/Vb5FgfBBAXX7N2CTonQrjvf1K" target="_blank">
-  <img src="https://asciinema.org/a/Vb5FgfBBAXX7N2CTonQrjvf1K.png" width="410">
-</a>
-
-# example gendiff <before> <after> json format
-<a href="https://asciinema.org/a/y6J8ZcxBM6vDmhkesw9kDYoGM" target="_blank">
-  <img src="https://asciinema.org/a/y6J8ZcxBM6vDmhkesw9kDYoGM.png" width="410">
-</a>
-
-# example gendiff <before> <after> YAML format
-<a href="https://asciinema.org/a/TFLdG7Z9dGO0pXRwFFsZiufht" target="_blank">
-  <img src="https://asciinema.org/a/TFLdG7Z9dGO0pXRwFFsZiufht.png" width="410">
-</a>
-
-# example gendiff <before> <after> ini format
-<a href="https://asciinema.org/a/YJLsXgJsE6B2uNLueWb3Zl3hu" target="_blank">
-  <img src="https://asciinema.org/a/YJLsXgJsE6B2uNLueWb3Zl3hu.png" width="410">
+# example gendiff <before> <after>
+<a href="https://asciinema.org/a/YbvT5xYaF2oyXuP7ZeF6rBlah" target="_blank">
+  <img src="https://asciinema.org/a/YbvT5xYaF2oyXuP7ZeF6rBlah.png" width="410">
 </a>

@@ -2,9 +2,9 @@ import path from 'path';
 import fs from 'fs';
 import generateDiff from '../src';
 
-const resultFilePath = path.join(__dirname, '/__fixtures__/genDiffResult');
+const resultFlatFilePath = path.join(__dirname, '/__fixtures__/genDiffResult');
 
-const testData = [
+const testDataFlat = [
   [
     'json',
     {
@@ -28,10 +28,44 @@ const testData = [
   ],
 ];
 
-test.each(testData)(
-  'gendiff %s files',
+const resultMultilevelFilePath = path.join(__dirname, '/__fixtures__/genDiffResultMulti');
+
+const testDataMultilevel = [
+  [
+    'json',
+    {
+      beforeFilePath: path.join(__dirname, '/__fixtures__/beforeMulti.json'),
+      afterFilePath: path.join(__dirname, '/__fixtures__/afterMulti.json'),
+    },
+  ],
+  [
+    'YAML',
+    {
+      beforeFilePath: path.join(__dirname, '/__fixtures__/beforeMulti.yml'),
+      afterFilePath: path.join(__dirname, '/__fixtures__/afterMulti.yml'),
+    },
+  ],
+  [
+    'ini',
+    {
+      beforeFilePath: path.join(__dirname, '/__fixtures__/beforeMulti.ini'),
+      afterFilePath: path.join(__dirname, '/__fixtures__/afterMulti.ini'),
+    },
+  ],
+];
+
+test.each(testDataFlat)(
+  'gendiff flat %s files',
   (format, { beforeFilePath, afterFilePath }) => {
-    expect(generateDiff(beforeFilePath, afterFilePath).trim())
-      .toBe(fs.readFileSync(resultFilePath, 'utf8').trim());
+    expect(generateDiff(beforeFilePath, afterFilePath))
+      .toBe(fs.readFileSync(resultFlatFilePath, 'utf8'));
+  },
+);
+
+test.each(testDataMultilevel)(
+  'gendiff multilevel %s files',
+  (format, { beforeFilePath, afterFilePath }) => {
+    expect(generateDiff(beforeFilePath, afterFilePath))
+      .toBe(fs.readFileSync(resultMultilevelFilePath, 'utf8'));
   },
 );
